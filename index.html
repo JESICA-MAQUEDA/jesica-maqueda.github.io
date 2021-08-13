@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <title>VIDEOJUEGO MAQUEDA</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="manifest" href="manifest.webmanifest">
+
+
+
+  <!-- Hoja de estilos -->
+  <link rel="stylesheet" href="materialize.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+  <link href="https://unpkg.com/nes.css@2.3.0/css/nes.min.css" rel="stylesheet" />
+
+  <link rel="shortcut icon" href="icon-192x192.png" type="image/x-icon">
+
+  <script src="js/howler.core.js"></script>
+  <script src='js/juego.js'></script>
+  <style>
+    @font-face {
+      font-family: "fuente";
+      src: url("PressStart2P.woff") format("woff"), url("PressStart2P.ttf") format("truetype")
+    }
+
+    body {
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+
+
+
+      font-family: fuente !important;
+      background-image: linear-gradient(146deg, rgba(44, 35, 109, 0.5) 0%, rgba(44, 35, 109, 0.5) 14.286%,rgba(64, 54, 108, 0.5) 14.286%, rgba(64, 54, 108, 0.5) 28.572%,rgba(83, 72, 106, 0.5) 28.572%, rgba(83, 72, 106, 0.5) 42.858%,rgba(103, 91, 105, 0.5) 42.858%, rgba(103, 91, 105, 0.5) 57.144%,rgba(123, 110, 103, 0.5) 57.144%, rgba(123, 110, 103, 0.5) 71.43%,rgba(142, 128, 102, 0.5) 71.43%, rgba(142, 128, 102, 0.5) 85.716%,rgba(162, 147, 100, 0.5) 85.716%, rgba(162, 147, 100, 0.5) 100.002%),linear-gradient(349deg, rgb(203, 4, 7) 0%, rgb(203, 4, 7) 14.286%,rgb(178, 9, 6) 14.286%, rgb(178, 9, 6) 28.572%,rgb(152, 13, 5) 28.572%, rgb(152, 13, 5) 42.858%,rgb(127, 18, 4) 42.858%, rgb(127, 18, 4) 57.144%,rgb(101, 22, 3) 57.144%, rgb(101, 22, 3) 71.43%,rgb(76, 27, 2) 71.43%, rgb(76, 27, 2) 85.716%,rgb(50, 31, 1) 85.716%, rgb(50, 31, 1) 100.002%);      height: 100vh;
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+
+
+    .nes-btn.is-primary {
+      width: 30%;
+    }
+
+    
+  </style>
+
+</head>
+
+<body onload='inicializa();'
+  style="background-image: linear-gradient(146deg, rgba(44, 35, 109, 0.5) 0%, rgba(44, 35, 109, 0.5) 14.286%,rgba(64, 54, 108, 0.5) 14.286%, rgba(64, 54, 108, 0.5) 28.572%,rgba(83, 72, 106, 0.5) 28.572%, rgba(83, 72, 106, 0.5) 42.858%,rgba(103, 91, 105, 0.5) 42.858%, rgba(103, 91, 105, 0.5) 57.144%,rgba(123, 110, 103, 0.5) 57.144%, rgba(123, 110, 103, 0.5) 71.43%,rgba(142, 128, 102, 0.5) 71.43%, rgba(142, 128, 102, 0.5) 85.716%,rgba(162, 147, 100, 0.5) 85.716%, rgba(162, 147, 100, 0.5) 100.002%),linear-gradient(349deg, rgb(203, 4, 7) 0%, rgb(203, 4, 7) 14.286%,rgb(178, 9, 6) 14.286%, rgb(178, 9, 6) 28.572%,rgb(152, 13, 5) 28.572%, rgb(152, 13, 5) 42.858%,rgb(127, 18, 4) 42.858%, rgb(127, 18, 4) 57.144%,rgb(101, 22, 3) 57.144%, rgb(101, 22, 3) 71.43%,rgb(76, 27, 2) 71.43%, rgb(76, 27, 2) 85.716%,rgb(50, 31, 1) 85.716%, rgb(50, 31, 1) 100.002%);">
+<!--
+<nav class="">
+    <div class="nav-wrapper blue-grey">
+      
+      <ul id="nav-mobile" class="right hide-on-med-and-down container">
+        <li><a onclick="cambiaStilo(1);" >Diseño 1</a></li>
+        <li><a onclick="cambiaStilo(2);">Diseño 2</a></li>
+        <li><a onclick="cambiaStilo(3);">Diseño 3</a></li>
+      </ul>
+    </div>
+  </nav> -->
+<font color="aqua" face="Courier New" size="12" ><center><b>Between Aisles</b></center></font>
+<font color="red" face="Courier New" size="6" > INSTRUCCIONES </font>
+<font color="white" face="Courier New" size="5" ><p> Si se encuentra conectado desde un dispositivo móvil, podrá utilizar los botones que se muestran en la parte inferior,
+  en caso de que se encuentre conectado desde una computadora, podrá utilizar las flechas de su teclado (⍐, ⍇, ⍗, ⍈). </p>
+<p>En el apartado de menú (☰), podrá seleccionar el diseño en el que desea juagar y comenzara el juego, donde tendrá que recoger la llava que esta en disitintos puntos y 
+  tendra que dirigirse a la puerta para poder pasar de nivel, pero si en el trascurso del juego choca con un enemigo, automaticamente se reiniciara el juego y tedra que vover a comenzar. </p></font>
+
+  <div class="fixed-action-btn horizontal" style="position: absolute; display: inline-block; right: 24px;">
+    <a class="btn-floating btn-large red">
+  <i class="ormat_align_justify">☰</i>
+</a>  
+<ul>
+  <li>
+    <a class="btn-floating blue-grey darken-1" onclick="cambiaStilo(1);">
+      <i class="material-icons">filter_1</i>
+    </a>
+  </li>
+  <li>
+    <a class="btn-floating blue-grey darken-1" onclick="cambiaStilo(2);">
+      <i class="material-icons">filter_1</i>
+    </a>
+  </li>
+  <li>
+    <a class="btn-floating blue-grey darken-1"  onclick="cambiaStilo(3);">
+      <i class="material-icons">filter_1</i>
+    </a>
+  </li>
+  <li>
+    <a class="btn-floating blue-grey darken-1" onclick="cambiaStilo(Math.floor(Math.random()*3));">
+      <i class="material-icons">shuffle</i>
+    </a>
+  </li>
+  <li>
+    <a class="btn-floating blue modal-trigger" href="#modal1">
+      <i class="material-icons">help_outline</i>
+    </a>
+  </li>
+</ul>
+</div>
+
+  <div class=" container">
+    <center>
+      <canvas id='canvas' width='750' height='500' class="nes-container is-rounded is-dark"></canvas>
+    </center>
+
+    <div id="botones" style="display: nones;">
+      <center>
+      <div class="row">
+        <button type="button" class="nes-btn is-warning" onclick="protagonista.arriba();">  
+          <i class="material-icons"> keyboard_arrow_up </i>
+        </button>
+        </div>
+
+        <div class="row">
+        <button type="button" class="nes-btn is-warning" onclick="protagonista.izquierda();">  
+          <i class="material-icons"> keyboard_arrow_left </i>
+        </button>
+
+        <button type="button" class="nes-btn is-disabled">  
+          <i class="material-icons"> lens </i>
+        </button>
+
+        <button type="button" class="nes-btn is-warning" onclick="protagonista.derecha();">  
+          <i class="material-icons"> keyboard_arrow_right </i>
+        </button>
+      </div>
+
+      <div class="row">
+        <button type="button" class="nes-btn is-warning" onclick="protagonista.abajo();">  
+          <i class="material-icons"> keyboard_arrow_down </i>
+        </button>
+        <center>
+      </div>
+  </div>
+
+    <div class="row">
+
+      <div class="col s3 m6">
+        <div class="card nes-container is-dark with-title">
+          <p class="title">NIVEL</p>
+          <div class="card-content white-text">
+            <h5 class="center" id="nivel"></h5>
+            <progress class="nes-progress is-error" value="1" max="4"></progress>
+          </div>
+
+        </div>
+      </div>
+      <div class="col s3 m6">
+        <div class="card nes-container is-dark with-title">
+          <p class="title">MÁXIMO</p>
+          <div class="card-content white-text">
+            <h5 class="center" id="maximo"></h5>
+            <progress class="nes-progress is-error" value="3" max="4"></progress>
+          </div>
+
+        </div>
+        <font color="gray " face="Courier New" size="7" ><b> Jesica Maqueda Romero </b></font>
+
+
+      </div>
+    </div>
+
+
+
+    <!-- <a class="btn-floating btn-large waves-effect waves-light right green darken-3 modal-trigger" href="#modal1"><i
+        class="material-icons">help_outline</i></a> -->
+
+
+
+  </div> <!-- finaliza container -->
+
+  
+
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <h4>Bienvenido a Between Aisles</h4>
+      <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eveniet minima officiis ipsa quis, deleniti dicta
+        asperiores eum nulla, qui quae quisquam excepturi. Non assumenda eum sequi quaerat ex inventore modi.</p>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Comenzar</a>
+    </div>
+  </div>
+
+
+
+
+  <!-- script materialize.css -->
+  <script src="materialize.min.js"></script>
+
+  <script>
+    M.AutoInit();
+    document.addEventListener('DOMContentLoaded', function () {
+      var elems = document.querySelectorAll('.modal');
+      var instances = M.Modal.init(elems, options);
+    });
+
+    navegador = navigator.userAgent;
+    moviles = ["Mobile", "iPhone", "iPod", "BlackBerry", "Opera Mini", "Sony", "MOT", "Nokia", "Samsung"];
+    detector = 0;
+    for (i in moviles) {
+      compruebo = navegador.indexOf(moviles[i])
+      if (compruevo > -1) {
+        detector = 1;
+
+      }
+    }
+    if (detector ==1) {
+      document.getElementById('canvas').style.zoom = "40%";    
+      document.getElementById('botones').style.display=" ";
+    }
+
+  </script>
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      console.log("El Navegador admite service workers");
+      window.addEventListener('load', function () {
+        //navigator.serviceWorker.register('sw_offlinepage.js')
+        //navigator.serviceWorker.register('sw_offlinesite.js')
+        navigator.serviceWorker.register('js/sw.js')
+
+          .then(function (registration) {
+            console.log('Service worker registrado de modo correcto');
+            console.log('Scope: ' + registration.scope)
+          }, function (error) {
+            console.log('El registro del Service worker ha fallado');
+            console.log(error)
+          });
+      });
+    }
+  </script>
+</body>
+
+</html>
